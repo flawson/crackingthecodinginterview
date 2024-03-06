@@ -8,10 +8,10 @@ func NewSingleLinkedList() *SingleLinkedList {
 	return &SingleLinkedList{}
 }
 
-func (l *SingleLinkedList) Insert(node *SingleNode) {
+func (l *SingleLinkedList) Insert(node *SingleNode) *SingleLinkedList {
 	if l.Head == nil {
 		l.Head = node
-		return
+		return l
 	}
 
 	current := l.Head
@@ -20,6 +20,7 @@ func (l *SingleLinkedList) Insert(node *SingleNode) {
 	}
 
 	current.Next = node
+	return l
 }
 
 type DoubleLinkedList struct {

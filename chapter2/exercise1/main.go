@@ -1,6 +1,11 @@
 package main
 
-import "github.com/flawson/crackingthecodinginterview/chapter2/linkedlist"
+import (
+	"fmt"
+	"math/rand"
+
+	"github.com/flawson/crackingthecodinginterview/chapter2/linkedlist"
+)
 
 func RemoveDups(list *linkedlist.SingleLinkedList) {
 	for current := list.Head; current.Next != nil; current = current.Next {
@@ -10,5 +15,16 @@ func RemoveDups(list *linkedlist.SingleLinkedList) {
 				current.Next = tmp
 			}
 		}
+	}
+}
+
+func main() {
+	list := linkedlist.NewSingleLinkedList()
+	for i := 0; i < 100; i++ {
+		list.Insert(linkedlist.NewSingleNode(rand.Intn(100)))
+	}
+	RemoveDups(list)
+	for current := list.Head; current != nil; current = current.Next {
+		fmt.Printf("%d\n", current.Value)
 	}
 }
